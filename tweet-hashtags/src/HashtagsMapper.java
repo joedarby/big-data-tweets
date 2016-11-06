@@ -27,8 +27,9 @@ public class HashtagsMapper extends Mapper<LongWritable, Text, Text, IntWritable
                 Pattern myRegex = Pattern.compile("(\\s|\\A)#([\\w\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u01FF]+)");
                 Matcher matcher = myRegex.matcher(tweet);
 
+                //add all hashtags as uppercase to ensure upper and lower are treated as the same
                 while (matcher.find()) {
-                    hashtags.add(matcher.group());
+                    hashtags.add(matcher.group().toUpperCase());
                 }
 
                 for (String hashtag : hashtags) {
