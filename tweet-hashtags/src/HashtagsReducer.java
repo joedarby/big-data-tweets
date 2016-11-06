@@ -18,9 +18,13 @@ public class HashtagsReducer extends Reducer<Text, IntWritable, Text, IntWritabl
             sum += value.get();
         }
 
-        IntWritable output = new IntWritable(sum);
+        //only write result to file if the hashtag has a count of 10 or more - we are only interested in popular hashtags
+        if (sum >= 10) {
+            IntWritable output = new IntWritable(sum);
+            context.write(key, output);
+        }
 
-        context.write(key, output);
+
 
 
 
