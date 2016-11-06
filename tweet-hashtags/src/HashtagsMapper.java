@@ -23,12 +23,12 @@ public class HashtagsMapper extends Mapper<LongWritable, Text, Text, IntWritable
             String tweet = splitLine[2];
 
             if (tweet.contains("#")) {
-                ArrayList<String> hashtags = new ArrayList<>();
+                ArrayList<String> hashtags = new ArrayList<String>();
                 Pattern myRegex = Pattern.compile("(\\s|\\A)#([\\w\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u01FF]+)");
                 Matcher matcher = myRegex.matcher(tweet);
 
                 while (matcher.find()) {
-                    hashtags.add("#" + matcher.group());
+                    hashtags.add(matcher.group());
                 }
 
                 for (String hashtag : hashtags) {
