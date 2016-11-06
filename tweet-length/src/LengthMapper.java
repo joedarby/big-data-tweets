@@ -18,7 +18,7 @@ public class LengthMapper extends Mapper<LongWritable, Text, Text, IntWritable> 
 
             int lower;
             if (tweetLength % 5 == 0) {
-                lower = tweetLength;
+                lower = ((tweetLength / 5) - 1) * 5 + 1;
             } else {
                 lower = (tweetLength / 5) * 5 + 1;
             }
