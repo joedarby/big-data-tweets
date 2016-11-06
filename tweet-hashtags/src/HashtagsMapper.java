@@ -13,7 +13,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 public class HashtagsMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
-    private ArrayList<String> hashtags = new ArrayList<>();
+    //private ArrayList<String> hashtags = new ArrayList<>();
 
 	@Override    
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
@@ -24,21 +24,32 @@ public class HashtagsMapper extends Mapper<LongWritable, Text, Text, IntWritable
 
             String tweet = splitLine[2];
 
-            Pattern myRegex = Pattern.compile("(\\s|\\A)#([\\w\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u01FF]+)");
+            String[] hashtags = tweet.split("#");
+
+            if (hashtags.length > 1) {
+
+                for (int i = 1; i == hashtags.length-1; i++) {
+                    Text textTag = new Text();
+                    textTag.set(hashtags[i]);
+
+                    IntWritable one = new IntWritable(1);
+
+                    context.write(textTag, one);
+                }
+
+            }
+
+            /*Pattern myRegex = Pattern.compile("(\\s|\\A)#([\\w\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u01FF]+)");
             Matcher matcher = myRegex.matcher(tweet);
 
             while (matcher.find()) {
                 hashtags.add("#" + matcher.group());
             }
+            */
 
-            for (String tag : hashtags) {
-                Text textTag = new Text();
-                textTag.set(tag);
 
-                IntWritable one = new IntWritable(1);
 
-                context.write(textTag, one);
-            }
+
 
 
         }
