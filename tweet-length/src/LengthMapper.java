@@ -1,24 +1,32 @@
 import java.io.IOException;
-import java.util.StringTokenizer;
-import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class LengthMapper extends Mapper<Text, bdp.stock.DailyStock, Text, DoubleWritable> {
+public class LengthMapper extends Mapper<Text, Text, Text, IntWritable> {
 
 	@Override    
-	public void map(Text key, bdp.stock.DailyStock value, Context context) throws IOException, InterruptedException {
+	public void map(Text key, Text value, Context context) throws IOException, InterruptedException {
 
-	Text company = value.getCompany();
-	DoubleWritable price = new DoubleWritable();
-	
-	price = value.getLow();
-	context.write(company, price);
-	
-	price = value.getHigh();
-	context.write(company, price);
-    	
-    	
+	    String[] splitLine = value.toString().split(";");
+
+        if (splitLine.length == 4) {
+
+            String tweetContent = splitLine[2];
+            int tweetLength = tweetContent.length();
+            int lower = (tweetLength / 5) * 5;
+            int upper = lower + 4;
+
+            String groupName = lower + " to " + upper;
+
+            Text group = new Text();
+            group.set(groupName);
+
+            IntWritable one = new IntWritable(1);
+
+            context.write(group, one);
+        }
+
     }
         
     	

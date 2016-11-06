@@ -24,10 +24,10 @@ public class LengthJob {
         
         job.setOutputKeyClass(Text.class);
         
-        job.setOutputValueClass(Text.class);
-        job.setMapOutputKeyClass(IntWritable.class);
+        job.setOutputValueClass(IntWritable.class);
+        job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
-        blah;
+
 
 
         
