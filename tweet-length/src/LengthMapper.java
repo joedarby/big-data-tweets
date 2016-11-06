@@ -15,7 +15,13 @@ public class LengthMapper extends Mapper<LongWritable, Text, Text, IntWritable> 
 
             String tweetContent = splitLine[2];
             int tweetLength = tweetContent.length();
-            int lower = (tweetLength / 5) * 5;
+
+            int lower;
+            if (tweetLength % 5 == 0) {
+                lower = tweetLength;
+            } else {
+                lower = (tweetLength / 5) * 5 + 1;
+            }
             int upper = lower + 4;
 
             String groupName = lower + " to " + upper;
