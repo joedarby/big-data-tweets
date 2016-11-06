@@ -1,10 +1,14 @@
 import java.io.IOException;
-import java.util.Date;
+import java.util.Calendar;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
+
+import static java.util.Calendar.DAY_OF_MONTH;
+import static java.util.Calendar.MONTH;
+import static java.util.Calendar.YEAR;
 
 public class TimeMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
@@ -17,8 +21,9 @@ public class TimeMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
             try {
                 long tweetTime = Long.parseLong(splitLine[0]);
-                Date tweetSimpleDate = new Date(tweetTime);
-                String dateString = tweetSimpleDate.toString();
+                Calendar cal = Calendar.getInstance();
+                cal.setTimeInMillis(tweetTime);
+                String dateString = cal.get(DAY_OF_MONTH) + "/" + cal.get(MONTH) + "/" + cal.get(YEAR);
 
                 Text tweetDate = new Text();
                 tweetDate.set(dateString);
