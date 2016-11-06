@@ -7,7 +7,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 
-public class CompanyMinMaxReducer extends Reducer<Text, DoubleWritable, Text, Text> {
+public class LengthReducer extends Reducer<Text, DoubleWritable, Text, Text> {
 
 
     public void reduce(Text key, Iterable<DoubleWritable> values, Context context)

@@ -3,7 +3,7 @@ import java.util.Arrays;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
@@ -20,13 +20,16 @@ public class LengthJob {
         job.setReducerClass(LengthReducer.class);
         job.setMapperClass(LengthMapper.class);
         
-        job.setInputFormatClass(SequenceFileInputFormat.class);
+        job.setInputFormatClass(SequenceFileInputFormat.class);  //not sure about this
         
         job.setOutputKeyClass(Text.class);
         
         job.setOutputValueClass(Text.class);
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(DoubleWritable.class);
+        job.setMapOutputKeyClass(IntWritable.class);
+        job.setMapOutputValueClass(IntWritable.class);
+        blah;
+
+
         
         Path outputPath = new Path(output);
         FileInputFormat.setInputPaths(job, StringUtils.join(input, ","));
