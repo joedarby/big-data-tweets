@@ -26,8 +26,7 @@ public class LengthJob {
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
 
-
-
+	job.setNumReduceTasks(3);
         
         Path outputPath = new Path(output);
         FileInputFormat.setInputPaths(job, StringUtils.join(input, ","));
