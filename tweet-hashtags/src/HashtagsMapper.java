@@ -29,7 +29,12 @@ public class HashtagsMapper extends Mapper<LongWritable, Text, Text, IntWritable
 
                 //add all hashtags as uppercase to ensure upper and lower are treated as the same
                 while (matcher.find()) {
-                    hashtags.add(matcher.group().toUpperCase());
+                    String tag = matcher.group().toUpperCase();
+                    //remove any leading space
+                    if (tag.startsWith(" ")) {
+                        tag = tag.substring(1);
+                    }
+                    hashtags.add(tag);
                 }
 
                 for (String hashtag : hashtags) {
@@ -40,22 +45,6 @@ public class HashtagsMapper extends Mapper<LongWritable, Text, Text, IntWritable
                 }
 
             }
-            /*
-            String[] hashtags = tweet.split("#");
-
-            if (hashtags.length > 1) {
-
-                for (int i = 1; i == hashtags.length-1; i++) {
-                    Text textTag = new Text();
-                    textTag.set(hashtags[i]);
-
-                    IntWritable one = new IntWritable(1);
-
-                    context.write(textTag, one);
-                }
-
-            }
-            */
 
         }
 
