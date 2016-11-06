@@ -18,7 +18,7 @@ public class TimeMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
             try {
                 long tweetTime = Long.parseLong(splitLine[0]);
                 Date tweetSimpleDate = new Date(tweetTime);
-                String dateString = tweetSimpleDate.getDate() + "/" + tweetSimpleDate.getMonth() + "/" + tweetSimpleDate.getYear();
+                String dateString = tweetSimpleDate.toString();
 
                 Text tweetDate = new Text();
                 tweetDate.set(dateString);
