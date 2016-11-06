@@ -15,16 +15,23 @@ public class TimeMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
         if (splitLine.length == 4) {
 
-            long tweetTime = Long.parseLong(splitLine[0]);
-            Date tweetSimpleDate = new Date(tweetTime);
-            String dateString = tweetSimpleDate.getDate() + "/" + tweetSimpleDate.getMonth() + "/" + tweetSimpleDate.getYear();
+            try {
+                long tweetTime = Long.parseLong(splitLine[0]);
+                Date tweetSimpleDate = new Date(tweetTime);
+                String dateString = tweetSimpleDate.getDate() + "/" + tweetSimpleDate.getMonth() + "/" + tweetSimpleDate.getYear();
 
-            Text tweetDate = new Text();
-            tweetDate.set(dateString);
+                Text tweetDate = new Text();
+                tweetDate.set(dateString);
 
-            IntWritable one = new IntWritable(1);
+                IntWritable one = new IntWritable(1);
 
-            context.write(tweetDate, one);
+                context.write(tweetDate, one);
+
+            } catch (NumberFormatException e) {
+                //Do nothing
+            }
+
+
         }
 
     }
