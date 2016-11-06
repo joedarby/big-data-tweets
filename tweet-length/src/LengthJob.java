@@ -20,8 +20,6 @@ public class LengthJob {
         job.setReducerClass(LengthReducer.class);
         job.setMapperClass(LengthMapper.class);
         
-        job.setInputFormatClass(SequenceFileInputFormat.class);  //not sure about this
-        
         job.setOutputKeyClass(Text.class);
         
         job.setOutputValueClass(IntWritable.class);
