@@ -11,15 +11,17 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class HashtagsJoinMapper extends Mapper<Text, IntWritable, Text, TextIntPair> {
+public class HashtagsJoinMapper extends Mapper<Object, Text, Text, TextIntPair> {
 
 	private Hashtable<String, String> countryCodes;
 	private TextIntPair countryTotalPair = new TextIntPair();
 	
 	//Map takes a "key = hashtag" and "value = occurrence count" pair from the tweets-hashtags job
-	public void map(Text key, IntWritable value, Context context) throws IOException, InterruptedException {
+	public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 
-		String hashtag = key.toString();
+		String line = value.toString();
+		String[] splitLine = line.split("\t");
+		String hashtag = splitLine[0];
 
 		//Look at hashtag to see if it contains an IOC country code or other relevant string (eg. "TEAMGB")
 		int matches = 0;
@@ -36,7 +38,7 @@ public class HashtagsJoinMapper extends Mapper<Text, IntWritable, Text, TextIntP
 			}
 		}
 
-		countryTotalPair.set(country, value.get());
+		countryTotalPair.set(country, splitLine[1]);
 
 		// Emit all of the original hashtags, but now labelled with the country they are *probably* supporting
 		context.write(key, countryTotalPair);
@@ -61,7 +63,7 @@ public class HashtagsJoinMapper extends Mapper<Text, IntWritable, Text, TextIntP
 			while ((line = br.readLine()) != null) {
 				context.getCounter(CustomCounters.NUM_COUNTRYCODES).increment(1);
 
-				String[] fields = line.split("\t");
+				String[] fields = line.split(",");
 				if (fields.length == 2)
 					countryCodes.put(fields[0], fields[1]);
 			}

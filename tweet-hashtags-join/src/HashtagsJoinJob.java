@@ -20,9 +20,9 @@ public class HashtagsJoinJob {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(TextIntPair.class);
 
-        job.addCacheFile(new Path("/input/hashtags.tsv").toUri());
+        job.addCacheFile(new Path("/input/countrycodes.csv").toUri());
 
-	    job.setNumReduceTasks(3);
+	job.setNumReduceTasks(1);
         
         Path outputPath = new Path(output);
         FileInputFormat.setInputPaths(job, StringUtils.join(input, ","));
