@@ -24,16 +24,19 @@ public class HashtagsMapper extends Mapper<LongWritable, Text, Text, IntWritable
 
             if (tweet.contains("#")) {
                 ArrayList<String> hashtags = new ArrayList<String>();
+		//use regex which includes regular word characters and accented characters to find proper hashtags
                 Pattern myRegex = Pattern.compile("(\\s|\\A)#([\\w\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u01FF]+)");
                 Matcher matcher = myRegex.matcher(tweet);
 
                 //add all hashtags as uppercase to ensure upper and lower are treated as the same
                 while (matcher.find()) {
                     String tag = matcher.group().toUpperCase();
-                    //remove any leading space
+                    //remove any leading space and "#" symbol
                     if (tag.startsWith(" ")) {
-                        tag = tag.substring(1);
-                    }
+                        tag = tag.substring(2);
+                    } else {
+			tag = tag.substring(1);
+		    }
                     hashtags.add(tag);
                 }
 
