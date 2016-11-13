@@ -56,13 +56,13 @@ public class HashtagsJoinMapper extends Mapper<Object, Text, Text, TextIntPair> 
         //if no match is found yet, move onto the other list (country names and strings like "TEAMGB") and see if the hashtag contains the first 5 characters.
         if (matchFound == 0) {
             for (String string : countryNames.keySet()) {
-                String first5 = "";
-                if (string.length() >= 5) {
-                    first5 = string.substring(0,5);
+                String first6 = "";
+                if (string.length() >= 6) {
+                    first6 = string.substring(0,6);
                 } else {
-                    first5 = string;
+                    first6 = string;
                 }
-                if (hashtag.contains(first5)) {
+                if (hashtag.contains(first6)) {
                     country = countryNames.get(string);
                     break;
                 }
