@@ -58,7 +58,7 @@ public class HashtagsJoinMapper extends Mapper<Object, Text, Text, TextIntPair> 
             for (String string : countryNames.keySet()) {
                 String first5 = "";
                 if (string.length() >= 5) {
-                    first5 = string.substring(0,4);
+                    first5 = string.substring(0,5);
                 } else {
                     first5 = string;
                 }
