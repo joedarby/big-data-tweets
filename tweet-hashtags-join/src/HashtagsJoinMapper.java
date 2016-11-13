@@ -17,8 +17,7 @@ public class HashtagsJoinMapper extends Mapper<Object, Text, Text, TextIntPair> 
 	private TextIntPair countryTotalPair = new TextIntPair();
 	private Text hashtagText = new Text();
 	private enum NumberOfCodes {HASHTAG}
-	
-	//Map takes a "key = hashtag" and "value = occurrence count" pair from the tweets-hashtags job
+
 	public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 
 
@@ -27,33 +26,21 @@ public class HashtagsJoinMapper extends Mapper<Object, Text, Text, TextIntPair> 
 		String hashtag = splitLine[0].trim();  //trim to remove any trailing whitespace
 		hashtagText.set(splitLine[0]);
 
-		//Look at hashtag to see if it contains an IOC country code or other relevant string (eg. "TEAMGB")
 		int matchFound = 0;
 		String country = "none";
 
-        /*
-        for (String code : countryNames.keySet()) {
-			if (hashtag.startsWith(code) || hashtag.endsWith(code) || hashtag.equals(code)) {  //code must be at start of end of hashtag (to exclude eg. #GIRLS = IRELAND (IRL))
-				matches += 1;
-				if (matches > 1) {
-					country = "none";	// If more than one country code (or other match) is made, set country = none (to exclude eg. "#GBRvsFRA")
-					break;
-				} else {
-					country = countryNames.get(code);   // If exactly one match is made, assign this hashtag to this country.
-				}
-			}
-		}
-		*/
         // if hashtag exactly matches an IOC country code, match this tag to the relevant country
-        for (String code : iocCodes.keySet()) {
-            if (hashtag.equals(code)) {
-                country = iocCodes.get(code);
-                matchFound = 1;
-                break;
+        if (hashtag.length() == 3){
+            for (String code : iocCodes.keySet()) {
+                if (hashtag.equals(code)) {
+                    country = iocCodes.get(code);
+                    matchFound = 1;
+                    break;
+                }
             }
         }
 
-        //if no match is found yet, move onto the other list (country names and strings like "TEAMGB") and see if the hashtag contains the first 5 characters.
+        //if no match is found yet, move onto the other list (country names and strings like "TEAMGB") and see if the hashtag contains the first 6 characters.
         if (matchFound == 0) {
             for (String string : countryNames.keySet()) {
                 String first6 = "";
