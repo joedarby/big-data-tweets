@@ -20,7 +20,8 @@ public class HashtagsJoinJob {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(TextIntPair.class);
 
-        job.addCacheFile(new Path("/user/jd306/input/countrycodes.csv").toUri());
+        job.addCacheFile(new Path("/user/jd306/input/ioc-3lettercodes.csv").toUri());
+        job.addCacheFile(new Path("/user/jd306/input/other-codes.csv").toUri());
 
 	    job.setNumReduceTasks(1);
         

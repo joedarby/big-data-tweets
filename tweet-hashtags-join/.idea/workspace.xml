@@ -24,8 +24,8 @@
       <file leaf-file-name="HashtagsJoinJob.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HashtagsJoinJob.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
+            <state relative-caret-position="374">
+              <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -39,14 +39,7 @@
             <state relative-caret-position="238">
               <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
               <folding>
-                <element signature="e#603#604#0" expanded="false" />
-                <element signature="e#632#633#0" expanded="false" />
-                <element signature="e#658#659#0" expanded="false" />
-                <element signature="e#683#684#0" expanded="false" />
-                <element signature="e#951#952#0" expanded="false" />
-                <element signature="e#1005#1006#0" expanded="false" />
-                <element signature="e#1244#1245#0" expanded="false" />
-                <element signature="e#1289#1290#0" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -55,11 +48,12 @@
       <file leaf-file-name="HashtagsJoinMapper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HashtagsJoinMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="986">
+              <caret line="58" column="35" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#488#503#0" expanded="true" />
+                <element signature="e#569#584#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -563,14 +557,7 @@
         <state relative-caret-position="238">
           <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
           <folding>
-            <element signature="e#603#604#0" expanded="false" />
-            <element signature="e#632#633#0" expanded="false" />
-            <element signature="e#658#659#0" expanded="false" />
-            <element signature="e#683#684#0" expanded="false" />
-            <element signature="e#951#952#0" expanded="false" />
-            <element signature="e#1005#1006#0" expanded="false" />
-            <element signature="e#1244#1245#0" expanded="false" />
-            <element signature="e#1289#1290#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -582,6 +569,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#488#503#0" expanded="true" />
+            <element signature="e#569#584#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -609,14 +597,7 @@
         <state relative-caret-position="238">
           <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
           <folding>
-            <element signature="e#603#604#0" expanded="false" />
-            <element signature="e#632#633#0" expanded="false" />
-            <element signature="e#658#659#0" expanded="false" />
-            <element signature="e#683#684#0" expanded="false" />
-            <element signature="e#951#952#0" expanded="false" />
-            <element signature="e#1005#1006#0" expanded="false" />
-            <element signature="e#1244#1245#0" expanded="false" />
-            <element signature="e#1289#1290#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -628,6 +609,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#488#503#0" expanded="true" />
+            <element signature="e#569#584#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -647,23 +629,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#488#503#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TextIntPair.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-          <folding>
-            <element signature="e#603#604#0" expanded="false" />
-            <element signature="e#632#633#0" expanded="false" />
-            <element signature="e#658#659#0" expanded="false" />
-            <element signature="e#683#684#0" expanded="false" />
-            <element signature="e#951#952#0" expanded="false" />
-            <element signature="e#1005#1006#0" expanded="false" />
-            <element signature="e#1244#1245#0" expanded="false" />
-            <element signature="e#1289#1290#0" expanded="false" />
+            <element signature="e#569#584#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -713,22 +679,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HashtagsJoinJob.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../tweet-hashtags/src/HashtagsMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -741,13 +697,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/TextIntPair.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HashtagsJoinJob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/HashtagsJoinMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="986">
+          <caret line="58" column="35" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#488#503#0" expanded="true" />
+            <element signature="e#569#584#0" expanded="true" />
           </folding>
         </state>
       </provider>
