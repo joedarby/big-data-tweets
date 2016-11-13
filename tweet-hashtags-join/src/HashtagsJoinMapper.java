@@ -12,7 +12,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 public class HashtagsJoinMapper extends Mapper<Object, Text, Text, TextIntPair> {
 
-	private Hashtable<String, String> countryCodes;
+	private Hashtable<String, String> countryCodes = new Hashtable<String,String>();
 	private TextIntPair countryTotalPair = new TextIntPair();
 	private Text hashtagText = new Text();
 	private enum NumberOfCodes {HASHTAG}
@@ -23,17 +23,17 @@ public class HashtagsJoinMapper extends Mapper<Object, Text, Text, TextIntPair> 
 
 		String line = value.toString();
 		String[] splitLine = line.split("\t");
-		String hashtag = splitLine[0];
+		String hashtag = splitLine[0].trim();  //trim to remove any trailing whitespace
 		hashtagText.set(splitLine[0]);
 
 		//Look at hashtag to see if it contains an IOC country code or other relevant string (eg. "TEAMGB")
 		int matches = 0;
 		String country = "none";
 		for (String code : countryCodes.keySet()) {
-			if (hashtag.contains(code)) {
+			if (hashtag.startsWith(code) || hashtag.endsWith(code) || hashtag.equals(code)) {  //code must be at start of end of hashtag (to exclude eg. #GIRLS = IRELAND (IRL))
 				matches += 1;
 				if (matches > 1) {
-					country = "none";	// If more than one country code (or other match) is made, set country = none (to exclude eg. "GBRvsFRA")
+					country = "none";	// If more than one country code (or other match) is made, set country = none (to exclude eg. "#GBRvsFRA")
 					break;
 				} else {
 					country = countryCodes.get(code);   // If exactly one match is made, assign this hashtag to this country.
@@ -52,8 +52,6 @@ public class HashtagsJoinMapper extends Mapper<Object, Text, Text, TextIntPair> 
 
 	@Override
 	protected void setup(Context context) throws IOException, InterruptedException {
-
-		countryCodes = new Hashtable<String, String>();
 
 		URI fileUri = context.getCacheFiles()[0];
 		FileSystem fs = FileSystem.get(context.getConfiguration());

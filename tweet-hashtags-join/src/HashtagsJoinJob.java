@@ -22,7 +22,7 @@ public class HashtagsJoinJob {
 
         job.addCacheFile(new Path("/user/jd306/input/countrycodes.csv").toUri());
 
-	job.setNumReduceTasks(1);
+	    job.setNumReduceTasks(1);
         
         Path outputPath = new Path(output);
         FileInputFormat.setInputPaths(job, StringUtils.join(input, ","));
